@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const API =
+  'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json';
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      Brastlewark: []
+    };
+  }
+
+  componentDidMount() {
+    fetch(API)
+      .then(response => response.json())
+      .then(data => this.setState({ Brastlewark: data.Brastlewark }));
+  }
   render() {
+    const { Brastlewark } = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <ul>
+        {Brastlewark.map(gnome => (
+          <li key={gnome.id}>
+            <p>{gnome.name}</p>
+          </li>
+        ))}
+      </ul>
     );
   }
 }
