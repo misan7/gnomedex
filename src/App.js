@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './styles';
+
+import 'normalize.css';
+import './styles/index.scss';
 
 const API =
   'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json';
