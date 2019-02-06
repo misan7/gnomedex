@@ -28,20 +28,26 @@ body,
         .gnome-profile {
             display: flex;
             flex-direction: column;
-            height: 324px;
-            width: 380px;
+            height: 266px;
+            width: 400px;
             margin: 12px;
-            border: 1px solid black;
-
+            box-shadow: 0 0 20px 10px color(gray, 3);
+            border-radius: 12px;
 
             .img-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 flex: 1;
                 width: 100%;
                 height: 100%;
 
                 img {
-                    width: 100%;
-                    height: 210px;
+                    width: 110px;
+                    height: 110px;
+                    border-radius: 140px;
+                    position: relative;
+                    top: 18px;
                 }
             }
 
@@ -55,15 +61,15 @@ body,
 
                 p:first-child {
                     margin: 0;
-                    color: green;
+                    color: color(gray, 9);
                     font-size: 1.8em;
                     font-weight: 600;
-
+                    letter-spacing: 1px;
                 }
 
                 p:nth-child(2) {
                     margin: 10px 0 10px;
-                    color: brown;
+                    color: color(gray, 8);
                     font-size: 1.2em;
                 }
             }
