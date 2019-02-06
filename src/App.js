@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles';
 
 const API =
   'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       Brastlewark: []
     };
@@ -15,19 +14,32 @@ class App extends Component {
   componentDidMount() {
     fetch(API)
       .then(response => response.json())
-      .then(data => this.setState({ Brastlewark: data.Brastlewark }));
+      .then(data =>
+        this.setState({
+          Brastlewark: data.Brastlewark
+        })
+      );
   }
   render() {
     const { Brastlewark } = this.state;
 
     return (
-      <ul>
-        {Brastlewark.map(gnome => (
-          <li key={gnome.id}>
-            <p>{gnome.name}</p>
-          </li>
-        ))}
-      </ul>
+      <div className="wrapper">
+        <div className="filters-container">Filters</div>
+        <div className="gnomes-container">
+          {Brastlewark.map(gnome => (
+            <div className="gnome-profile" key={gnome.id}>
+              <div className="img-box" alt={gnome.name}>
+                <img src={gnome.thumbnail} />
+              </div>
+              <div className="gnome-data">
+                <p>{gnome.name}</p>
+                <p>Age: {gnome.age}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     );
   }
 }
