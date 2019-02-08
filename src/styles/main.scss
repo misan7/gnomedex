@@ -28,11 +28,11 @@ body,
         .gnome-profile {
             display: flex;
             flex-direction: column;
-            height: 266px;
+            height: 350px;
             width: 400px;
             margin: 12px;
-            box-shadow: 0 0 20px 10px color(gray, 3);
-            border-radius: 12px;
+            box-shadow: 0 0 20px 10px color(gray, 1);
+            border-radius: 3px;
 
             .img-box {
                 display: flex;
@@ -47,7 +47,6 @@ body,
                     height: 110px;
                     border-radius: 140px;
                     position: relative;
-                    top: 18px;
                 }
             }
 
