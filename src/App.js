@@ -4,7 +4,7 @@ import 'normalize.css';
 import './styles/index.scss';
 
 import BrastlewarkAPI from './api/brastlewark.js';
-import { Modal } from './components';
+import { Modal, Cards } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -53,23 +53,11 @@ class App extends Component {
         <Modal isOpen={this.state.showModal}>
           <button onClick={this.handleCloseModal}>X</button>
         </Modal>
-        <div className="gnomes-container">
-          {' '}
-          {this.state.err
-            ? 'Run! The Orcs are comming!'
-            : Brastlewark.map(gnome => (
-                <div className="gnome-profile" key={gnome.id}>
-                  <div className="img-box" alt={gnome.name}>
-                    <img src={gnome.thumbnail} alt={gnome.name} />{' '}
-                  </div>{' '}
-                  <div className="gnome-data">
-                    <p> {gnome.name} </p> <p> Age: {gnome.age} </p>{' '}
-                    <p> Height: {gnome.height.toFixed()} cm</p>{' '}
-                    <p> Weight: {gnome.weight.toFixed()} Kg</p>{' '}
-                  </div>{' '}
-                </div>
-              ))}{' '}
-        </div>{' '}
+        {this.state.err ? (
+          'Run! The Orcs are comming!'
+        ) : (
+          <Cards data={this.state.Brastlewark} />
+        )}
       </div>
     );
   }
