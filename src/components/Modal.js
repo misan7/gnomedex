@@ -7,7 +7,11 @@ class Modal extends React.Component {
     }
     return (
       <div>
-        <div>{this.props.children}Opened!</div>
+        <div>
+          {' '}
+          {this.props.children}
+          Click to close{' '}
+        </div>{' '}
       </div>
     );
   }
