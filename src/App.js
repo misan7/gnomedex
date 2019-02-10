@@ -4,13 +4,14 @@ import 'normalize.css';
 import './styles/index.scss';
 
 import BrastlewarkAPI from './api/brastlewark.js';
-import { Modal, Cards } from './components';
+import { Modal, Cards, Header } from './components';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Brastlewark: [],
+      filteredGnomes: [],
       gnomeID: {},
       showModal: false,
       err: null
@@ -25,13 +26,22 @@ class App extends Component {
     try {
       const Brastlewark = await BrastlewarkAPI.getData();
       this.setState({
-        Brastlewark
+        Brastlewark,
+        filteredGnomes: Brastlewark
       });
     } catch (err) {
       this.setState({
         err
       });
     }
+  };
+
+  filterGnome = e => {
+    const filteredGnomes = this.state.Brastlewark.filter(g =>
+      g.name.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    this.setState({ filteredGnomes });
+    console.log(filteredGnomes);
   };
 
   handleOpenModal = e => {
@@ -55,21 +65,21 @@ class App extends Component {
   };
 
   render() {
-    const { Brastlewark, err, showModal, gnomeID } = this.state;
+    const { err, showModal, gnomeID, filteredGnomes } = this.state;
 
     return (
       <div className="wrapper">
-        <div className="filters-container"> Filters </div>{' '}
+        <Header filterGnome={this.filterGnome} />
         {err ? (
           'Run! The Orcs are comming!'
         ) : (
-          <Cards data={Brastlewark} idSelect={this.handleOpenModal} />
-        )}{' '}
+          <Cards data={filteredGnomes} idSelect={this.handleOpenModal} />
+        )}
         <Modal
           data={gnomeID}
           isOpen={showModal}
           hideModal={this.handleCloseModal}
-        />{' '}
+        />
       </div>
     );
   }

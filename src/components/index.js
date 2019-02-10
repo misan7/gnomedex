@@ -1,8 +1,10 @@
-import Modal from './Modal.js';
+import Header from './Header.js';
 import Cards from './Cards.js';
+import Modal from './Modal.js';
 
 
 export {
-    Modal,
-    Cards
+    Header,
+    Cards,
+    Modal
 };
