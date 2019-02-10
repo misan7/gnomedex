@@ -11,11 +11,10 @@ class App extends Component {
     super(props);
     this.state = {
       Brastlewark: [],
+      gnomeID: {},
       showModal: false,
       err: null
     };
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   componentDidMount() {
@@ -25,39 +24,52 @@ class App extends Component {
   getData = async () => {
     try {
       const Brastlewark = await BrastlewarkAPI.getData();
-      this.setState({ Brastlewark });
+      this.setState({
+        Brastlewark
+      });
     } catch (err) {
-      this.setState({ err });
+      this.setState({
+        err
+      });
     }
   };
 
-  handleOpenModal() {
-    this.setState({ showModal: true });
-  }
+  handleOpenModal = e => {
+    const gnomeID = this.state.Brastlewark.find(
+      gnome => gnome.id === +e.target.id
+    );
+    this.setState(
+      {
+        gnomeID
+      },
+      () => {
+        this.setState({
+          showModal: true
+        });
+      }
+    );
+  };
 
-  handleCloseModal() {
+  handleCloseModal = e => {
     this.setState({ showModal: false });
-  }
+  };
 
   render() {
-    const { Brastlewark } = this.state;
-    const { err } = this.state;
-
-    console.log({ Brastlewark });
-    console.log({ err });
+    const { Brastlewark, err, showModal, gnomeID } = this.state;
 
     return (
       <div className="wrapper">
         <div className="filters-container"> Filters </div>{' '}
-        <button onClick={this.handleOpenModal}>Open Modal</button>
-        <Modal isOpen={this.state.showModal}>
-          <button onClick={this.handleCloseModal}>X</button>
-        </Modal>
-        {this.state.err ? (
+        {err ? (
           'Run! The Orcs are comming!'
         ) : (
-          <Cards data={this.state.Brastlewark} />
-        )}
+          <Cards data={Brastlewark} idSelect={this.handleOpenModal} />
+        )}{' '}
+        <Modal
+          data={gnomeID}
+          isOpen={showModal}
+          hideModal={this.handleCloseModal}
+        />{' '}
       </div>
     );
   }

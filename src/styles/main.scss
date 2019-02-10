@@ -5,7 +5,7 @@ body,
     display: flex;
     width: 100%;
     height: 100%;
-    font-family: "SF Display Regular";
+    font-family: 'SF Display Regular';
     font-weight: 400;
     font-size: 16px;
 }
@@ -24,7 +24,6 @@ body,
         flex-wrap: wrap;
         justify-content: center;
 
-
         .gnome-profile {
             display: flex;
             flex-direction: column;
@@ -33,6 +32,8 @@ body,
             margin: 12px;
             box-shadow: 0 0 20px 10px color(gray, 1);
             border-radius: 3px;
+
+
 
             .img-box {
                 display: flex;
@@ -47,6 +48,15 @@ body,
                     height: 110px;
                     border-radius: 140px;
                     position: relative;
+                    cursor: pointer;
+                    opacity: 0.5;
+                    transition: 0.3s;
+                }
+
+                img:hover {
+                    box-shadow: 0 0 20px 10px color(gray, 3);
+                    opacity: 1;
+
                 }
             }
 
@@ -56,7 +66,7 @@ body,
                 justify-content: center;
                 align-items: center;
                 flex: 1;
-                font-family: "SF Display Bold";
+                font-family: 'SF Display Bold';
 
                 p:first-child {
                     margin: 0;
