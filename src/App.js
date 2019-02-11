@@ -13,6 +13,7 @@ class App extends Component {
       Brastlewark: [],
       filteredGnomes: [],
       gnomeID: {},
+      professions: [],
       showModal: false,
       err: null
     };
@@ -37,11 +38,12 @@ class App extends Component {
   };
 
   filterGnome = e => {
-    const filteredGnomes = this.state.Brastlewark.filter(g =>
-      g.name.toLowerCase().includes(e.target.value.toLowerCase())
+    const filteredGnomes = this.state.Brastlewark.filter(gnome =>
+      gnome.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    this.setState({ filteredGnomes });
-    console.log(filteredGnomes);
+    this.setState({
+      filteredGnomes
+    });
   };
 
   handleOpenModal = e => {
@@ -60,8 +62,35 @@ class App extends Component {
     );
   };
 
-  handleCloseModal = e => {
-    this.setState({ showModal: false });
+  handleCloseModal = () => {
+    this.setState({
+      showModal: false
+    });
+  };
+
+  profession = () => {
+    const { filteredGnomes } = this.state;
+
+    const professions =
+      filteredGnomes.length > 0 &&
+      filteredGnomes.reduce((total, amount) => {
+        amount.professions.forEach(prof => {
+          if (total.indexOf(prof) === -1) {
+            total.push(prof);
+          }
+        });
+        return total;
+      }, []);
+    console.log(professions);
+
+    return (
+      professions.length > 0 &&
+      professions.map((prof, key) => (
+        <div key={key} id={prof}>
+          {prof}
+        </div>
+      ))
+    );
   };
 
   render() {
@@ -69,7 +98,7 @@ class App extends Component {
 
     return (
       <div className="wrapper">
-        <Header filterGnome={this.filterGnome} />
+        <Header filterGnome={this.filterGnome} /> <div>{this.profession()}</div>
         {err ? (
           'Run! The Orcs are comming!'
         ) : (
