@@ -13,7 +13,6 @@ class App extends Component {
       Brastlewark: [],
       filteredGnomes: [],
       gnomeID: {},
-      professions: [],
       showModal: false,
       err: null
     };
@@ -68,37 +67,12 @@ class App extends Component {
     });
   };
 
-  profession = () => {
-    const { filteredGnomes } = this.state;
-
-    const professions =
-      filteredGnomes.length > 0 &&
-      filteredGnomes.reduce((total, amount) => {
-        amount.professions.forEach(prof => {
-          if (total.indexOf(prof) === -1) {
-            total.push(prof);
-          }
-        });
-        return total;
-      }, []);
-    console.log(professions);
-
-    return (
-      professions.length > 0 &&
-      professions.map((prof, key) => (
-        <div key={key} id={prof}>
-          {prof}
-        </div>
-      ))
-    );
-  };
-
   render() {
     const { err, showModal, gnomeID, filteredGnomes } = this.state;
 
     return (
       <div className="wrapper">
-        <Header filterGnome={this.filterGnome} /> <div>{this.profession()}</div>
+        <Header filterGnome={this.filterGnome} data={filteredGnomes} />
         {err ? (
           'Run! The Orcs are comming!'
         ) : (
