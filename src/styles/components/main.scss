@@ -13,13 +13,9 @@ body,
 .wrapper {
     flex-direction: column;
 
-    .filters-container {
-        flex: 3;
-    }
-
     .gnomes-container {
         display: flex;
-        flex: 7;
+        flex: 3;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;

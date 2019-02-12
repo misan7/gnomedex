@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ReactComponent as Logo } from '../images/svg/logo.svg';
 class Header extends Component {
   filterByProf = e => {
     const prof = e.target.id;
@@ -25,7 +26,12 @@ class Header extends Component {
     return (
       professions.length > 0 &&
       professions.map((prof, key) => (
-        <div key={key} id={prof} onClick={this.filterByProf}>
+        <div
+          key={key}
+          id={prof}
+          onClick={this.filterByProf}
+          className="prof-btn"
+        >
           {prof}
         </div>
       ))
@@ -35,21 +41,37 @@ class Header extends Component {
   render() {
     return (
       <div className="filters-container">
-        <h1>Brastlewark Citizen</h1>
-        <input
-          placeholder="Search by Gnome"
-          autoFocus
-          onChange={this.props.filterGnome}
-        />
-        <div onClick={this.clearProf}>Clear Professions</div>
-        <div>{this.profession()}</div>
+        <div className="logo-box">
+          <Logo className="logo" />
+          <h1 className="title"> Brastlewark Town </h1>
+        </div>
+        <div className="filters-box">
+          <div className="input-box">
+            <input
+              placeholder="Search by Gnome"
+              autoFocus
+              onChange={this.props.filterGnome}
+            />
+            <div className="clear-btn" onClick={this.clearProf}>
+              {' '}
+              Clear Professions{' '}
+            </div>
+          </div>
+          <div className="professions-box">
+            <h3>Professions:</h3>
+            <div className="profs">{this.profession()}</div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 Header.propTypes = {
-  filterGnome: PropTypes.func
+  filterGnome: PropTypes.func,
+  clearData: PropTypes.func,
+  filterProf: PropTypes.func,
+  data: PropTypes.array
 };
 
 export default Header;

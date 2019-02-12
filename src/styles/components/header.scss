@@ -1,0 +1,112 @@
+.filters-container {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+
+    .logo-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex: 2;
+
+        .logo {
+            height: 60px;
+            width: 60px;
+            margin-left: 15px;
+        }
+
+        .title {
+            font-family: 'Sigmar One';
+            color: color(orange, 6);
+            margin-left: 15px;
+
+        }
+    }
+
+    .filters-box {
+        display: flex;
+        flex: 5;
+
+        .input-box {
+            flex: 1;
+
+            input {
+                margin: 10px;
+                padding: 12px 12px;
+                border: 2px solid color(gray, 6);
+                border-radius: 25px;
+                outline: none;
+                color: color(gray, 7);
+                transition: all 150ms linear;
+
+            }
+
+            input::placeholder {
+                text-align: center;
+                color: color(gray, 5);
+            }
+
+            input:focus {
+                border-color: color(gray, 4);
+            }
+
+            .clear-btn {
+                color: color(gray, 1);
+                background-color: color(gray, 9);
+                margin: 10px;
+                padding: 12px 12px;
+                cursor: pointer;
+                transition: all 150ms linear;
+                text-align: center;
+                border-radius: 4px;
+                box-shadow: 2px 2px 10px color(gray, 9);
+                font-weight: bold;
+
+                &:hover {
+                    opacity: .80;
+                }
+
+            }
+
+        }
+
+        .professions-box {
+            flex: 6;
+            display: flex;
+            flex-direction: column;
+
+            h3 {
+                margin: 10px;
+            }
+
+            .profs {
+                display: flex;
+                flex-wrap: wrap;
+                overflow: auto;
+
+
+                .prof-btn {
+                    height: 18px;
+                    width: 100px;
+                    color: color(blue, 9);
+                    background-color: color(blue, 1);
+                    margin: 10px;
+                    padding: 12px 12px;
+                    cursor: pointer;
+                    transition: all 150ms linear;
+                    text-align: center;
+                    border-radius: 4px;
+                    box-shadow: 1px 1px 6px color(blue, 5);
+                    font-weight: bold;
+
+                    &:hover {
+                        border: 1px solid color(blue, 8);
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}

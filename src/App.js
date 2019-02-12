@@ -50,7 +50,9 @@ class App extends Component {
     const professions = this.state.filteredGnomes.filter(gnome =>
       gnome.professions.includes(prof)
     );
-    this.setState({ filteredGnomes: professions });
+    this.setState({
+      filteredGnomes: professions
+    });
   };
 
   clearData = e => {
@@ -89,17 +91,17 @@ class App extends Component {
           data={filteredGnomes}
           filterProf={this.filterProf}
           clearData={this.clearData}
-        />{' '}
+        />
         {err ? (
           'Run! The Orcs are comming!'
         ) : (
           <Cards data={filteredGnomes} idSelect={this.handleOpenModal} />
-        )}{' '}
+        )}
         <Modal
           data={gnomeID}
           isOpen={showModal}
           hideModal={this.handleCloseModal}
-        />{' '}
+        />
       </div>
     );
   }

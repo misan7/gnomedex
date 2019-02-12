@@ -1,5 +1,6 @@
-@import '_mixins.scss';
-@import './fonts.scss';
-@import './color-palette.scss';
-@import './main.scss';
-@import './modal.scss';
+@import './assets/_mixins.scss';
+@import './assets//fonts.scss';
+@import './assets//color-palette.scss';
+@import './components/main.scss';
+@import './components/modal.scss';
+@import './components//header.scss';
