@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       Brastlewark: [],
       filteredGnomes: [],
+      professions: [],
       gnomeID: {},
       showModal: false,
       err: null
@@ -45,6 +46,17 @@ class App extends Component {
     });
   };
 
+  filterProf = prof => {
+    const professions = this.state.filteredGnomes.filter(gnome =>
+      gnome.professions.includes(prof)
+    );
+    this.setState({ filteredGnomes: professions });
+  };
+
+  clearData = e => {
+    this.getData();
+  };
+
   handleOpenModal = e => {
     const gnomeID = this.state.Brastlewark.find(
       gnome => gnome.id === +e.target.id
@@ -72,17 +84,22 @@ class App extends Component {
 
     return (
       <div className="wrapper">
-        <Header filterGnome={this.filterGnome} data={filteredGnomes} />
+        <Header
+          filterGnome={this.filterGnome}
+          data={filteredGnomes}
+          filterProf={this.filterProf}
+          clearData={this.clearData}
+        />{' '}
         {err ? (
           'Run! The Orcs are comming!'
         ) : (
           <Cards data={filteredGnomes} idSelect={this.handleOpenModal} />
-        )}
+        )}{' '}
         <Modal
           data={gnomeID}
           isOpen={showModal}
           hideModal={this.handleCloseModal}
-        />
+        />{' '}
       </div>
     );
   }

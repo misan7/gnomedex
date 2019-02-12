@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 class Header extends Component {
+  filterByProf = e => {
+    const prof = e.target.id;
+    this.props.filterProf(prof);
+  };
+
+  clearProf = e => {
+    this.props.clearData();
+  };
+
   profession = () => {
     const professions =
       this.props.data.length > 0 &&
@@ -16,7 +25,7 @@ class Header extends Component {
     return (
       professions.length > 0 &&
       professions.map((prof, key) => (
-        <div key={key} id={prof}>
+        <div key={key} id={prof} onClick={this.filterByProf}>
           {prof}
         </div>
       ))
@@ -32,6 +41,7 @@ class Header extends Component {
           autoFocus
           onChange={this.props.filterGnome}
         />
+        <div onClick={this.clearProf}>Clear Professions</div>
         <div>{this.profession()}</div>
       </div>
     );
