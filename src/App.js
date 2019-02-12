@@ -83,25 +83,28 @@ class App extends Component {
 
   render() {
     const { err, showModal, gnomeID, filteredGnomes } = this.state;
+    const {
+      filterGnome,
+      filterProf,
+      clearData,
+      handleOpenModal,
+      handleCloseModal
+    } = this;
 
     return (
       <div className="wrapper">
         <Header
-          filterGnome={this.filterGnome}
+          filterGnome={filterGnome}
           data={filteredGnomes}
-          filterProf={this.filterProf}
-          clearData={this.clearData}
-        />
+          filterProf={filterProf}
+          clearData={clearData}
+        />{' '}
         {err ? (
           'Run! The Orcs are comming!'
         ) : (
-          <Cards data={filteredGnomes} idSelect={this.handleOpenModal} />
-        )}
-        <Modal
-          data={gnomeID}
-          isOpen={showModal}
-          hideModal={this.handleCloseModal}
-        />
+          <Cards data={filteredGnomes} idSelect={handleOpenModal} />
+        )}{' '}
+        <Modal data={gnomeID} isOpen={showModal} hideModal={handleCloseModal} />{' '}
       </div>
     );
   }
