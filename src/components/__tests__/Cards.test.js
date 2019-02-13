@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import Cards from '../Cards';
 
-test('renders <Cards/> without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Cards />, div);
+it('renders <Cards/> without crashing', () => {
+  shallow(<Cards />);
 });

@@ -38,7 +38,7 @@ class Header extends Component {
         ))
       );
     } catch (err) {
-      return <div>[Error]: Run! The Orcs are comming!</div>;
+      return <div> [Error]: Run!The Orcs are comming! </div>;
     }
   };
 
@@ -56,9 +56,11 @@ class Header extends Component {
               autoFocus
               onChange={this.props.filterGnome}
             />
-            <div className="clear-btn" onClick={this.clearProf}>
-              Clear Professions
-            </div>
+            <label>
+              <div className="clear-btn" onClick={this.clearProf}>
+                Clear Parameters
+              </div>
+            </label>
           </div>
           <div className="professions-box">
             <h3> Professions: </h3>

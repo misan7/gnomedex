@@ -41,21 +41,18 @@ class Modal extends Component {
             <div className="data-container">
               <Weight className="svg-icon" />
               <p>
-                {' '}
                 Weight: {weight ? weight.toFixed() : 'Weight Not Founded'} Kg
               </p>
             </div>
             <div className="data-container">
               <Height className="svg-icon" />
               <p>
-                {' '}
                 Height: {height ? height.toFixed() : 'Height Not Founded'} cm
               </p>
             </div>
             <div className="data-container">
               <Hair className="svg-icon moustache" />
               <p>
-                {' '}
                 Hair color: {hair_color ? hair_color : 'Hair Color Not Founded'}
               </p>
             </div>

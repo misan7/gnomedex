@@ -1,9 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import App from './App';
 
-test('renders <App/> without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('renders without crashing', () => {
+  shallow(<App />);
+});
+
+it('renders an error if API call crashes', () => {
+  const wrapper = shallow(<App />);
+  wrapper.setState({ err: true });
+  expect(wrapper.contains(<div>[Error]: Run! The Orcs are comming!</div>)).toBe(
+    true
+  );
 });
