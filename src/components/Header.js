@@ -12,30 +12,34 @@ class Header extends Component {
   };
 
   profession = () => {
-    const professions =
-      this.props.data.length > 0 &&
-      this.props.data.reduce((total, amount) => {
-        amount.professions.forEach(prof => {
-          if (total.indexOf(prof) === -1) {
-            total.push(prof);
-          }
-        });
-        return total;
-      }, []);
+    try {
+      const professions =
+        this.props.data.length > 0 &&
+        this.props.data.reduce((total, amount) => {
+          amount.professions.forEach(prof => {
+            if (total.indexOf(prof) === -1) {
+              total.push(prof);
+            }
+          });
+          return total;
+        }, []);
 
-    return (
-      professions.length > 0 &&
-      professions.map((prof, key) => (
-        <div
-          key={key}
-          id={prof}
-          onClick={this.filterByProf}
-          className="prof-btn"
-        >
-          {prof}
-        </div>
-      ))
-    );
+      return (
+        professions.length > 0 &&
+        professions.map((prof, key) => (
+          <div
+            key={key}
+            id={prof}
+            onClick={this.filterByProf}
+            className="prof-btn"
+          >
+            {prof}
+          </div>
+        ))
+      );
+    } catch (err) {
+      return <div>[Error]: Run! The Orcs are comming!</div>;
+    }
   };
 
   render() {
@@ -53,13 +57,12 @@ class Header extends Component {
               onChange={this.props.filterGnome}
             />
             <div className="clear-btn" onClick={this.clearProf}>
-              {' '}
-              Clear Professions{' '}
+              Clear Professions
             </div>
           </div>
           <div className="professions-box">
-            <h3>Professions:</h3>
-            <div className="profs">{this.profession()}</div>
+            <h3> Professions: </h3>
+            <div className="profs"> {this.profession()} </div>
           </div>
         </div>
       </div>

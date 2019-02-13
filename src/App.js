@@ -93,7 +93,7 @@ class App extends Component {
           clearData={this.clearData}
         />
         {err ? (
-          'Run! The Orcs are comming!'
+          <div>[Error]: Run! The Orcs are comming!</div>
         ) : (
           <Cards data={filteredGnomes} idSelect={this.handleOpenModal} />
         )}
