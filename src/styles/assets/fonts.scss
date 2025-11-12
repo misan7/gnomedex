@@ -1,16 +1,16 @@
 @include font-face('SF Display Bold',
-'../fonts/SF-UI-Display-Bold',
+'../../fonts/SF-UI-Display-Bold',
 700,
 bold,
 otf);
 
 @include font-face('SF Display Regular',
-'../fonts/SF-UI-Display-Regular',
+'../../fonts/SF-UI-Display-Regular',
 400,
 null,
 otf);
 
-@include font-face('Sigmar One', '../fonts/SigmarOne-Regular',
+@include font-face('Sigmar One', '../../fonts/SigmarOne-Regular',
 400,
 null,
 ttf);

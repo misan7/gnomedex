@@ -26,7 +26,7 @@ body,
             height: 350px;
             width: 400px;
             margin: 12px;
-            box-shadow: 0 0 20px 10px color(gray, 1);
+            box-shadow: 0 0 20px 10px getColor(gray, 1);
             border-radius: 3px;
 
 
@@ -50,7 +50,7 @@ body,
                 }
 
                 img:hover {
-                    box-shadow: 0 0 20px 10px color(gray, 3);
+                    box-shadow: 0 0 20px 10px getColor(gray, 3);
                     opacity: 1;
 
                 }
@@ -66,7 +66,7 @@ body,
 
                 p:first-child {
                     margin: 0;
-                    color: color(gray, 9);
+                    color: getColor(gray, 9);
                     font-size: 1.8em;
                     font-weight: 600;
                     letter-spacing: 1px;
@@ -74,7 +74,7 @@ body,
 
                 p:nth-child(2) {
                     margin: 10px 0 10px;
-                    color: color(gray, 8);
+                    color: getColor(gray, 8);
                     font-size: 1.2em;
                 }
             }

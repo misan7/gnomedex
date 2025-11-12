@@ -36,11 +36,8 @@
     // =============================================================================
     // Variable Colors
     // =============================================================================
-    @function color($color,
+    @function getColor($color,
     $tone) {
-
-        @warn map-get($palettes,
-        $color);
 
         @if map-has-key($palettes,
         $color) {
